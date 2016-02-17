@@ -36,7 +36,7 @@ public class WorkoutDetailFragment extends Fragment {
         }
     }
 
-    public void setWorkoutId(long id){
+    public void setWorkout(long id){
         this.workoutId = id;
     }
 
