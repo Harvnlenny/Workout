@@ -1,10 +1,10 @@
 package com.hfad.workout;
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 
-public class MainActivity extends ActionBarActivity implements WorkoutListFragment.WorkoutListListener {
+public class MainActivity extends Activity implements WorkoutListFragment.WorkoutListListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
