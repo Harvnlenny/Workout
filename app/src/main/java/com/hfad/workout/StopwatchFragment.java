@@ -57,7 +57,7 @@ public class StopwatchFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
-        savedInstanceState.putInt("seconds", running);
+        savedInstanceState.putInt("seconds", seconds);
         savedInstanceState.putBoolean("running", running);
         savedInstanceState.putBoolean("wasRunning", wasRunning);
     }
@@ -91,7 +91,7 @@ public class StopwatchFragment extends Fragment {
                 }
                 handler.postDelayed(this, 1000);
             }
-        })
+        });
 
     }
 }
