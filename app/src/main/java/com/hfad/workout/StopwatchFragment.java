@@ -1,17 +1,17 @@
 package com.hfad.workout;
 
-
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Button;
 
-import android.os.Handler;
 
 
-public class StopwatchFragment extends Fragment {
+public class StopwatchFragment extends Fragment implements View.OnClickListener {
     // Number of seconds displayed on the stopwatch.
     private int seconds = 0;
     //Is the stopwatch running?
@@ -37,7 +37,28 @@ public class StopwatchFragment extends Fragment {
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_stopwatch, container, false);
         runTimer(layout);
+        Button startButton = (Button) layout.findViewById(R.id.start_button);
+        startButton.setOnClickListener(this);
+        Button stopButton = (Button) layout.findViewById(R.id.stop_button);
+        stopButton.setOnClickListener(this);
+        Button resetButton = (Button) layout.findViewById(R.id.reset_button);
+        resetButton.setOnClickListener(this);
         return layout;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.start_button:
+                onClickStart(v);
+                break;
+            case R.id.stop_button:
+                onClickStop(v);
+                break;
+            case R.id.reset_button:
+                onClickReset(v);
+                break;
+        }
     }
 
     @Override
@@ -84,7 +105,7 @@ public class StopwatchFragment extends Fragment {
                 int hours = seconds / 3600;
                 int minutes = (seconds % 3600) / 60;
                 int secs = seconds % 60;
-                String time = String.format("%d;%02d;%02d", hours, minutes, secs);
+                String time = String.format("%d:%02d:%02d", hours, minutes, secs);
                 timeView.setText(time);
                 if (running){
                     seconds++;
